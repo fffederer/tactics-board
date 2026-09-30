@@ -8,6 +8,8 @@
   --home: #d62828;
   --away: #1f4fd6;
   --header-h: 52px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
   font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif;
   color: var(--text);
 }
@@ -55,8 +57,8 @@ button.primary:hover { filter: brightness(1.08); }
   display: flex;
   align-items: center;
   gap: 16px;
-  height: var(--header-h);
-  padding: 0 16px;
+  height: calc(var(--header-h) + var(--safe-top));
+  padding: var(--safe-top) 16px 0;
   padding-left: max(16px, env(safe-area-inset-left));
   padding-right: max(16px, env(safe-area-inset-right));
   background: var(--panel);
@@ -94,7 +96,7 @@ button.primary:hover { filter: brightness(1.08); }
   display: grid;
   grid-template-columns: minmax(270px, 340px) minmax(0, 1fr) minmax(270px, 340px);
   gap: 12px;
-  height: calc(100dvh - var(--header-h));
+  height: calc(100dvh - var(--header-h) - var(--safe-top));
   padding: 12px;
 }
 
@@ -231,7 +233,7 @@ button.primary:hover { filter: brightness(1.08); }
 @media (max-width: 900px), (pointer: coarse) and (max-height: 500px) {
   :root { --header-h: 44px; }
 
-  .app-header { gap: 10px; padding-top: 0; padding-bottom: 0; }
+  .app-header { gap: 10px; padding-bottom: 0; }
   .app-header h1 { display: none; }
   .tabs { display: flex; }
   .pc-only { display: none; }
@@ -239,6 +241,7 @@ button.primary:hover { filter: brightness(1.08); }
   .layout {
     display: block;
     padding: 6px;
+    padding-bottom: max(6px, var(--safe-bottom));
     padding-left: max(6px, env(safe-area-inset-left));
     padding-right: max(6px, env(safe-area-inset-right));
   }
@@ -320,7 +323,7 @@ button.primary:hover { filter: brightness(1.08); }
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 12px;
-  height: calc(100dvh - var(--header-h));
+  height: calc(100dvh - var(--header-h) - var(--safe-top));
   padding: 12px;
 }
 
