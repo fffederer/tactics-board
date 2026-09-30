@@ -1,0 +1,7 @@
+# 選手DB の元データと確認リスト (アプリは使わない。データはスプレッドシート側で管理する)
+data/players-*.tsv
+data/players-*-review.md
+# 作成スクリプトの作業フォルダ
+tools/players/work/
+__pycache__/
+node_modules/

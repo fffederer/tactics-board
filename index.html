@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>戦術ボード</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-tab="board">
+  <header class="app-header">
+    <h1>戦術ボード</h1>
+    <nav class="tabs" aria-label="画面切り替え">
+      <button type="button" data-tab="board" aria-current="true">ボード</button>
+      <button type="button" data-tab="home">ホーム</button>
+      <button type="button" data-tab="away">アウェイ</button>
+    </nav>
+    <span class="spacer"></span>
+    <button type="button" class="mode-badge" hidden>サンプルデータ</button>
+    <button type="button" class="header-link" data-action="settings">接続設定</button>
+    <a class="header-link pc-only" href="formations.html">フォーメーション作成</a>
+    <button type="button" id="save-image" class="primary">画像を保存</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel" data-side="home" aria-label="ホームのスタメン表"></section>
+
+    <section class="board" aria-label="フォーメーション図">
+      <div class="board-bar">
+        <div class="formation-ctl" data-side="home">
+          <label>ホーム <select data-field="formation"></select></label>
+          <button type="button" data-action="reset">配置リセット</button>
+        </div>
+        <div class="formation-ctl" data-side="away">
+          <label>アウェイ <select data-field="formation"></select></label>
+          <button type="button" data-action="reset">配置リセット</button>
+        </div>
+      </div>
+      <p class="rotate-hint">iPhone を横向きにすると見やすくなります</p>
+      <div class="pitch-wrap">
+        <svg id="pitch" role="img" aria-label="フォーメーション図"></svg>
+      </div>
+    </section>
+
+    <section class="panel" data-side="away" aria-label="アウェイのスタメン表"></section>
+  </main>
+
+  <div id="preview" class="preview" hidden>
+    <div class="preview-box">
+      <p>画像を長押しして「"写真"に保存」を選んでください。</p>
+      <img alt="保存するフォーメーション図">
+      <button type="button" data-action="close-preview">閉じる</button>
+    </div>
+  </div>
+
+  <p id="status" class="status" role="status"></p>
+</body>
+</html>
